@@ -44,7 +44,7 @@
                         <!-- div text -->
                         <div class="text d-flex flex-column p-0 align-content-center  ">
                             <span>Ricevi notifiche di nuovi messaggi</span>
-                            <span class=" ">Attiva notifiche desktop</span>
+                            <span class="text-decoration-underline ">Attiva notifiche desktop</span>
                         </div>
                     </div>
 
@@ -56,20 +56,20 @@
 
                     <!-- creazione contatti con chats -->
                     <div class="col-12 contacts">
-                        <div v-for="(user, index) in contacts" :key="index" class="col-12 user d-flex justify-content-between border border-secondary-subtle ">
+                        <div v-for="(user, index) in contacts" :key="index" class="col-12 user d-flex justify-content-between border border-secondary-subtle  ">
                             <!-- figure-text div -->
                             <div class="text ms-2 d-flex ">
                             <figure>
                                 <img class="profilepic rounded-circle " :src="user.avatar" alt="">
                             </figure>
                             <!-- text div -->
-                            <div>
-                                <span>{{ user.name }}</span>
-                                <p>Ultimo messaggio inviato</p>
+                            <div class="d-flex flex-column justify-content-center ">
+                                <span class="fw-bold ">{{ user.name }}</span>
+                                <p class="text-secondary" v-text="user.messages.length > 0 ? user.messages[user.messages.length - 1].message : 'Nessun messaggio'"></p>
                             </div>
                             </div>
                             <!-- orario text -->
-                            <span>12:00</span>
+                            <span class="data text-secondary" v-text="user.messages.length > 0 ? user.messages[user.messages.length - 1].date : ''"></span>
                         </div>
                     </div>
                 </div>
