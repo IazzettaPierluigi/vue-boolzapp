@@ -18,7 +18,7 @@
 <body>
     
     <div id="app">
-        <div class="container-flui w-75 m-auto mt-4  ">
+        <div class="container-flui w-75 m-auto mt-4 vh-100  ">
             <div class="row">
                 <!-- col4 nella quale andrà tutta la parte di sinistra -->
                 <div class="col-4">
@@ -26,7 +26,7 @@
                         <!-- div per contenere immagine e nome -->
                         <div class="d-flex align-items-center">
                             <img class="  rounded-circle profilepic" src="./img/avatar_io.jpg" alt="">
-                            <p class="fs-5">Sofia</p>
+                            <span class="fs-5">Sofia</span>
                         </div>
 
                         <!-- div per contenere le icone -->
@@ -47,8 +47,34 @@
                             <span class=" ">Attiva notifiche desktop</span>
                         </div>
                     </div>
+
+                    <!-- search bar -->
+                    <div class="input-group input-group-sm ">
+                        <span class="input-group-text rounded-0 " id="inputGroup-sizing-sm"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" class="form-control rounded-0 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Cerca o inizia una nuova chat">
+                    </div>
+
+                    <!-- creazione contatti con chats -->
+                    <div class="col-12 contacts">
+                        <div v-for="(user, index) in contacts" :key="index" class="col-12 user d-flex justify-content-between border border-secondary-subtle ">
+                            <!-- figure-text div -->
+                            <div class="text ms-2 d-flex ">
+                            <figure>
+                                <img class="profilepic rounded-circle " :src="user.avatar" alt="">
+                            </figure>
+                            <!-- text div -->
+                            <div>
+                                <span>{{ user.name }}</span>
+                                <p>Ultimo messaggio inviato</p>
+                            </div>
+                            </div>
+                            <!-- orario text -->
+                            <span>12:00</span>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- col8 dedicata alle chat aperte con i messaggi -->
                 <div class="col-8"></div>
             </div>
         </div>
