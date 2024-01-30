@@ -1,3 +1,7 @@
+#app{
+    background-color: lightgray;
+}
+
 .profilepic{
     width: 60px
 }
@@ -8,4 +12,13 @@ figure{
 
 .data{
     font-size: 10px;
+}
+
+.dashboard{
+    height: 90%;
+    background-image: url(./img/background-wa.png);
+}
+
+.container-fluid{
+    height: 90%;
 }
