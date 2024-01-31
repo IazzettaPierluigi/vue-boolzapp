@@ -90,6 +90,7 @@ createApp({
           ],
           activeChat: 0,
           newText: '',
+
       }
 
   },
@@ -103,10 +104,15 @@ createApp({
 
       addMessage(){
         if (this.newText.trim() !== '') {
+          const currentTime = new Date();
+          const currentHour = currentTime.getHours();
+          const currentMinutes = currentTime.getMinutes();
+          const formattedTime = `${currentHour}:${currentMinutes}`;
+
           this.contacts[this.activeChat].messages.push({
-              date: '10/01/2020 16:15:22',
-              message: this.newText,
-              status: 'sent'
+            date: formattedTime,
+            message: this.newText,
+            status: 'sent'
             });
             this.newText = '';
         }
