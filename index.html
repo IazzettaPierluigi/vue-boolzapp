@@ -120,7 +120,7 @@
 
                 <div
                     id="col-right-chat"
-                    class="flex-grow-1 overflow-y-scroll p-3">
+                    class="flex-grow-1 overflow-y-scroll ">
 
 
 
@@ -155,6 +155,8 @@
                             name="newMessage"
                             id="newMessage"
                             placeholder="Nuovo messaggio.."
+                            v-model="newText"
+                            @keyup.enter="addMessage"
                         />
                     </div>
                     <i class="fa fa-microphone px-3" aria-hidden="true"></i>

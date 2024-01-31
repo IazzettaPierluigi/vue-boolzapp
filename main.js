@@ -89,7 +89,7 @@ createApp({
               },
           ],
           activeChat: 0,
-          
+          newText: '',
       }
 
   },
@@ -99,7 +99,17 @@ createApp({
   methods: {
       selectChat(index){
         this.activeChat = index;
-      }
+      },
 
+      addMessage(){
+        if (this.newText.trim() !== '') {
+          this.contacts[this.activeChat].messages.push({
+              date: '10/01/2020 16:15:22',
+              message: this.newText,
+              status: 'sent'
+            });
+            this.newText = '';
+        }
+    },
   }
 }, ).mount('#app')
