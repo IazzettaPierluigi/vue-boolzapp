@@ -88,7 +88,8 @@ createApp({
                   ],
               },
           ],
-          activeChat: 0
+          activeChat: 0,
+          
       }
 
   },
@@ -99,5 +100,6 @@ createApp({
       selectChat(index){
         this.activeChat = index;
       }
+
   }
 }, ).mount('#app')

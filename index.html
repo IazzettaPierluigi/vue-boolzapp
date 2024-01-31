@@ -108,7 +108,7 @@
                         </figure>
                         <div>
                             <span>{{ contacts[activeChat].name }}</span>
-                            <p class="ultimo-accesso">Ultimo accesso oggi alle 12:00</p>
+                            <p class="ultimo-accesso">{{ contacts[activeChat].messages[contacts[activeChat].messages.length - 1].date }}</p>
                         </div>
                     </div>
                     <div class="d-flex gap-3">
