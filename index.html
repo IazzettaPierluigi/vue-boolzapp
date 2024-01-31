@@ -125,17 +125,16 @@
 
 
                         <div
-                            
-                            class=" sent ms-auto p-3 rounded position-relative mb-4">
+                        v-for="(element, index) in contacts[activeChat].messages"  :class=" (element.status === 'sent') ? 'sent ms-auto p-3 rounded mb-2 ' : 'received me-auto bg-light p-3 rounded mb-2  '" class="position-relative ">
                             <p class="m-0">
-                                topo gigio
+                               {{ element.message }}
                             </p>
-                            <span>
-                                15:00
+                            <span class="lower-date">
+                                {{element.date}}
                             </span>
                         </div>
                     
-                    
+<!--                     
                         <div class="received bg-light p-3 rounded position-relative">
                             <p class="m-0">
                                 hai portato a spasso il cane
@@ -143,7 +142,7 @@
                             <span>
                                 15:00
                             </span>
-                        </div>
+                        </div> -->
                     
                 </div>
 
