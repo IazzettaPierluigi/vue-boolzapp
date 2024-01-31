@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boolzapp milestone 1</title>
+    <title>Boolzapp</title>
 
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css'
         integrity='sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=='
@@ -66,7 +66,8 @@
                         
                         <div
                             v-for="(element, index) in contacts"
-                            class="p-2 border d-flex align-items-center justify-content-between gap-2">
+                            class="p-2 border d-flex align-items-center justify-content-between gap-2"
+                            @click="selectChat(index)">
 
                             <div class="d-flex align-items-center">
                                 <figure>
@@ -106,7 +107,7 @@
                             <img :src=" `./img/avatar_1.jpg` " class="rounded-circle" width="65" alt="avatar personale">
                         </figure>
                         <div>
-                            <span>Michele</span>
+                            <span>{{ contacts[activeChat].name }}</span>
                             <p class="ultimo-accesso">Ultimo accesso oggi alle 12:00</p>
                         </div>
                     </div>

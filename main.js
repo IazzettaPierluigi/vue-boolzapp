@@ -96,6 +96,8 @@ createApp({
       // console.log('Hello');
   },
   methods: {
-
+      selectChat(index){
+        this.activeChat = index;
+      }
   }
 }, ).mount('#app')
