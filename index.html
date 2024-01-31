@@ -1,125 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boolzapp</title>
+    <title>Boolzapp milestone 1</title>
 
-    <!-- my style -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css'
+        integrity='sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=='
+        crossorigin='anonymous' />
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.css'
+        integrity='sha512-tx5+1LWHez1QiaXlAyDwzdBTfDjX07GMapQoFTS74wkcPMsI3So0KYmFe6EHZjI8+eSG0ljBlAQc3PQ5BTaZtQ=='
+        crossorigin='anonymous' />
+
+
     <link rel="stylesheet" href="./style.css">
-
-    <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
-<body>
-    
-    <div id="app" class="vh-100  ">
-        <div class="container-fluid w-75   m-auto mt-4 bg-white  ">
-            <div class="row">
-                <!-- col4 nella quale andrà tutta la parte di sinistra -->
-                <div class="col-4 p-0 h-100  m-0 ">
-                    <div class="d-flex align-items-center col-12 justify-content-between p-2 border border-secondary-subtle  ">
-                        <!-- div per contenere immagine e nome -->
-                        <div class="d-flex align-items-center">
-                            <img class="  rounded-circle profilepic" src="./img/avatar_io.jpg" alt="">
-                            <span class="fs-5">Sofia</span>
-                        </div>
 
-                        <!-- div per contenere le icone -->
-                        <div class="d-flex gap-3">
-                            <i class="fa-solid fa-circle-notch"></i>
-                            <i class="fa-solid fa-message"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </div>
+<body class="py-5">
+
+    <div id="app" class="container">
+        <div class="row h-100">
+            <div
+                id="col-left"
+                class="col-5 border px-0 d-flex flex-column">
+
+                <div id="col-left-top" class="p-2 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <figure>
+                            <img src="./img/avatar_io.jpg" class="rounded-circle" width="65" alt="avatar personale">
+                        </figure>
+                        <span>Sofia</span>
                     </div>
-
-                    <!-- parte azzurra -->
-                    <div class="col-12 p-2 d-flex align-items-center bg-info-subtle ">
-                        <i class="fa-solid fa-bell-slash fs-3 me-3 bg-white  text-info  p-3 rounded-circle "></i>
-
-                        <!-- div text -->
-                        <div class="text d-flex flex-column p-0 align-content-center  ">
-                            <span>Ricevi notifiche di nuovi messaggi</span>
-                            <span class="text-decoration-underline ">Attiva notifiche desktop</span>
-                        </div>
-                    </div>
-
-                    <!-- search bar -->
-                    <div class="input-group input-group-sm ">
-                        <span class="input-group-text rounded-0 " id="inputGroup-sizing-sm"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" class="form-control rounded-0 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Cerca o inizia una nuova chat">
-                    </div>
-
-                    <!-- creazione contatti con chats -->
-                    <div class="col-12 contacts h-100 ">
-                        <div v-for="(user, index) in contacts" :key="index" class="col-12 user d-flex justify-content-between border border-secondary-subtle p-1  ">
-                            <!-- figure-text div -->
-                            <div class="text ms-2 d-flex ">
-                            <figure>
-                                <img class="profilepic rounded-circle " :src="user.avatar" alt="">
-                            </figure>
-                            <!-- text div -->
-                            <div class="d-flex flex-column justify-content-center ">
-                                <span class="fw-bold ">{{ user.name }}</span>
-                                <p class="text-secondary" v-text="user.messages.length > 0 ? user.messages[user.messages.length - 1].message : 'Nessun messaggio'"></p>
-                            </div>
-                            </div>
-                            <!-- orario text -->
-                            <span class="data text-secondary" v-text="user.messages.length > 0 ? user.messages[user.messages.length - 1].date : ''"></span>
-                        </div>
+                    <div class="d-flex gap-3">
+                        <i class="fas fa-circle-notch"></i>
+                        <i class="fas fa-comment-alt"></i>
+                        <i class="fas fa-ellipsis-v"></i>
                     </div>
                 </div>
 
-                <!-- col8 dedicata alle chat aperte con i messaggi -->
-                <div class="col-8 p-0 m-0  ">
-                    <!-- div per contenere le info della chat -->
-                    <div class="d-flex align-items-center col-12 justify-content-between border border-secondary-subtle p-2 ">
-                        <!-- div per contenere immagine e nome -->
-                        <div class="d-flex align-items-center">
-                            <img class="  rounded-circle profilepic" src="./img/avatar_io.jpg" alt="">
-                            <div class="d-flex flex-column justi">
-                                <span class="fs-6 fw-bold ">Sofia</span>
-                                <p class="data">ultimo accesso</p>
+                <div id="col-left-notifiche" class="p-2 d-flex align-items-center gap-3">
+                    <div id="bell" class="rounded-circle bg-light">
+                        <i class="fa fa-bell-slash" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h3 class="fs-6">Ricevi notifiche di nuovi messaggi</h3>
+                        <a href="">Attiva notifiche desktop</a>
+                    </div>
+                </div>
+
+                <div id="col-left-search" class="p-2 ">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Cerca nella chat..." aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                </div>
+
+                <div id="col-left-chats"
+                    class="h-100 d-flex flex-grow-1 bg-light overflow-y-scroll">
+                    <div class="w-100">
+                        
+                        <div
+                            v-for="(element, index) in contacts"
+                            class="p-2 border d-flex align-items-center justify-content-between gap-2">
+
+                            <div class="d-flex align-items-center">
+                                <figure>
+                                    <img
+                                    :src=" `./img/avatar${element.avatar}.jpg` "
+                                    alt=""
+                                    class="rounded-circle"
+                                    width="65">
+                                </figure>
+                                <div>
+                                    <span>
+                                        {{ element.name }}
+                                    </span>
+                                    <p class="ultimo-messaggio">
+                                        {{ element.messages[element.messages.length - 1].message }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="ultimo-messaggio">
+                                    {{ element.messages[element.messages.length - 1].date }}
+                                </span>
                             </div>
                         </div>
 
-                        <!-- div per contenere le icone -->
-                        <div class="d-flex gap-3">
-                            <i class="fa-solid fa-circle-notch"></i>
-                            <i class="fa-solid fa-message"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="col-right"
+                class="col-7 border px-0 d-flex flex-column">
+
+                <div id="col-left-top" class="p-2 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-3">
+                        <figure>
+                            <img :src=" `./img/avatar_1.jpg` " class="rounded-circle" width="65" alt="avatar personale">
+                        </figure>
+                        <div>
+                            <span>Michele</span>
+                            <p class="ultimo-accesso">Ultimo accesso oggi alle 12:00</p>
                         </div>
                     </div>
-
-                    <!-- div per contenere la chat con backround e messaggi -->
-                    <div class="col-12 dashboard  bg-black ">
-
+                    <div class="d-flex gap-3">
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-paperclip"></i>
+                        <i class="fas fa-ellipsis-v"></i>
                     </div>
+                </div>
 
-                    <!-- div per mandare i messaggi -->
-                    <div>
-                        <div class="input-group bg-body-secondary ">
-                            <span class="input-group-text p-3"><i class="fa-regular fa-face-smile"></i></span>
-                            <input type="text" class="form-control h-75 align-self-center   " aria-label="Amount (to the nearest dollar)">
-                            <span class="input-group-text"><i class="fa-solid fa-microphone"></i></span>
+                <div
+                    id="col-right-chat"
+                    class="flex-grow-1 overflow-y-scroll p-3">
+
+
+
+                        <div
+                            
+                            class=" sent ms-auto p-3 rounded position-relative mb-4">
+                            <p class="m-0">
+                                topo gigio
+                            </p>
+                            <span>
+                                15:00
+                            </span>
                         </div>
+                    
+                    
+                        <div class="received bg-light p-3 rounded position-relative">
+                            <p class="m-0">
+                                hai portato a spasso il cane
+                            </p>
+                            <span>
+                                15:00
+                            </span>
+                        </div>
+                    
+                </div>
+
+                <div id="col-right-new-message" class="d-flex align-items-center p-2 gap-3">
+                    <i class="far fa-smile px-3"></i>
+                    <div class="w-100">
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="newMessage"
+                            id="newMessage"
+                            placeholder="Nuovo messaggio.."
+                        />
                     </div>
+                    <i class="fa fa-microphone px-3" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
     </div>
-    
-    
-    
-    <!-- vue script -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <!-- my script -->
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'
+        integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        crossorigin='anonymous'></script>
+
+    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+
     <script src="./main.js"></script>
-    <!-- bootstrap script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
+
 </html>
