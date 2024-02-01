@@ -115,6 +115,13 @@ createApp({
             status: 'sent'
             });
             this.newText = '';
+
+            this.contacts[this.activeChat].messages.push({
+                date: formattedTime,
+                message: 'ok',
+                status: 'received'
+                });
+                this.newText = '';
         }
     },
   }
