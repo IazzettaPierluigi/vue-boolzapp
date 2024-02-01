@@ -134,13 +134,14 @@ createApp({
                     } else {
                         element.visible = false;
                     }
+                    console.log(element.visible)
                 });
             } else {
-                // Se la stringa di ricerca è vuota, mantieni tutti i contatti visibili
+              
                 this.contacts.forEach(element => {
                     element.visible = true;
                 });
             }
         },
-  }
+    }
 }, ).mount('#app')
