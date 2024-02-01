@@ -4,10 +4,6 @@ const {
 createApp({
   data() {
       return {
-          user: {
-              name: 'Nome Utente',
-              avatar: '_io'
-          },
           contacts: [{
                   name: 'Michele',
                   avatar: '_1',
@@ -123,7 +119,28 @@ createApp({
                     status: 'received'
                 });
             }, 1000);
+
+           
+            
         }
     },
+
+         //funzione per la searchbar 
+         searchName() {
+            if (this.searchText.trim() !== '') {
+                this.contacts.forEach(element => {
+                    if (element.name.toLowerCase().includes(this.searchText.toLowerCase())) {
+                        element.visible = true;
+                    } else {
+                        element.visible = false;
+                    }
+                });
+            } else {
+                // Se la stringa di ricerca è vuota, mantieni tutti i contatti visibili
+                this.contacts.forEach(element => {
+                    element.visible = true;
+                });
+            }
+        },
   }
 }, ).mount('#app')
