@@ -116,12 +116,13 @@ createApp({
             });
             this.newText = '';
 
-            this.contacts[this.activeChat].messages.push({
-                date: formattedTime,
-                message: 'ok',
-                status: 'received'
+            setTimeout(() => {
+                this.contacts[this.activeChat].messages.push({
+                    date: formattedTime,
+                    message: 'Ok',
+                    status: 'received'
                 });
-                this.newText = '';
+            }, 1000);
         }
     },
   }
